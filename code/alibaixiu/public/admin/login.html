@@ -1,0 +1,72 @@
+<!-- b:登录拦截 -->
+<!-- b1：发送请求地址 -->
+<script src="/login/status"></script>
+<!-- b2：接收相应数据 -->
+<script>
+    if (!isLogin) {
+        location.href = '/admin/login.html';
+    }
+</script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sign in &laquo; Admin</title>
+    <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+
+<body>
+    <div class="login">
+        <div class="login-wrap">
+            <img class="avatar" src="../assets/img/default.png">
+            <div class="form-group">
+                <label for="email" class="sr-only">邮箱</label>
+                <input id="email" type="email" class="form-control" placeholder="邮箱" autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password" class="sr-only">密码</label>
+                <input id="password" type="password" class="form-control" placeholder="密码">
+            </div>
+            <button class="btn btn-primary btn-block" id="loginBtn">登 录</button>
+        </div>
+    </div>
+    <script src="../assets/vendors/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        //a：实现登录功能
+        //a1：对登录按钮进行监听
+        $('#loginBtn').on('click', function() {
+            var email = $('#email').val();
+            var password = $('#password').val();
+            //a2：验证是否输入了密码
+            if (email.trim().length == 0) {
+                alert('请输入邮箱');
+                return;
+            }
+            if (password.trim().length == 0) {
+                alert('请输入密码');
+                return;
+            }
+            //a3:实现登录功能，通过ajax实现网络请求
+            $.ajax({
+                url: '/login',
+                type: 'post',
+                data: {
+                    email: email,
+                    password: password
+                },
+                success: function(response) {
+                    location.href = 'index.html';
+                },
+                error: function(e) {
+                    alert('用户名或密码错误');
+                }
+            })
+
+        })
+    </script>
+
+</body>
+
+</html>

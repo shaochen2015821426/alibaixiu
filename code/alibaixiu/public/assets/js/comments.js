@@ -53,3 +53,20 @@ $('#commentsBox').on('click', '.state', function() {
         }
     })
 })
+
+//e:实现删除评论功能
+//e1：对删除按钮点击事件进行委托
+$('#commentsBox').on('click', '.delete', function() {
+    if (confirm('确定要删除该评论吗？')) {
+        //e2:获取删除评论接口需要的参数：id
+        var id = $(this).attr('data-id');
+        //e3:调用删除评论接口
+        $.ajax({
+            type: 'delete',
+            url: '/comments/' + id,
+            success: function() {
+                location.reload();
+            }
+        })
+    }
+})

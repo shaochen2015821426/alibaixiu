@@ -107,7 +107,7 @@
             <td>{{$value.state == 0 ?'未批准':'已批准'}}</td>
             <td class="text-center">
                 <a href="javascript:;" class="btn btn-warning btn-xs state" data-id="{{$value._id}}" data-state="{{$value.state}}">{{$value.state == 0 ? '批准' : '驳回'}}</a>
-                <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+                <a href="javascript:;" class="btn btn-danger btn-xs delete" data-id="{{$value._id}}">删除</a>
             </td>
         </tr>
         {{/each}}

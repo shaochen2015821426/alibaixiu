@@ -36,3 +36,32 @@ $('#slideForm').on('submit', function() {
     })
     return false;
 })
+
+//c:展示轮播图列表
+//c1：调用获取轮播图列表的接口
+$.ajax({
+    type: 'get',
+    url: '/slides',
+    success: function(response) {
+        //c2:将获取的列表数据与模板进行拼接
+        var html = template('slideListTpl', { data: response })
+        $('#slideListBox').html(html);
+    }
+})
+
+// d:实现：删除轮播图
+//d1：对删除按钮点击事件进行委托
+$('#slideListBox').on('click', '.delete', function() {
+    if (confirm('确定要删除该轮播图吗？')) {
+        //d2：获取删除接口需要的id值
+        var id = $(this).attr('data-id');
+        //d3：调用删除接口，删除id值对应的轮播图
+        $.ajax({
+            type: 'delete',
+            url: '/slides/' + id,
+            success: function() {
+                location.reload();
+            }
+        })
+    }
+})

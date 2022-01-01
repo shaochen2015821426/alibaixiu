@@ -1,3 +1,9 @@
+<script src="/login/status"></script>
+<script>
+    if (!isLogin) {
+        location.href = '/admin/login.html';
+    }
+</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -9,6 +15,7 @@
     <link rel="stylesheet" href="../assets/vendors/nprogress/nprogress.css">
     <link rel="stylesheet" href="../assets/css/admin.css">
     <script src="../assets/vendors/nprogress/nprogress.js"></script>
+
 </head>
 
 <body>
@@ -106,6 +113,7 @@
     <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
     <!-- 引入模板引擎 -->
     <script src="../assets/vendors/art-template/template-web.js"></script>
+    <script src="../assets/js/common.js"></script>
     <!-- 创建所有文章的模板 -->
     <script type="text/html" id="postsTpl">
         {{each data.records}}

@@ -21,7 +21,6 @@ $.ajax({
     type: 'get',
     url: '/comments/count',
     success: function(response) {
-        console.log(response)
         $('#commentCount').html('<strong>' + response.commentCount + '</strong>条评论')
     }
 })

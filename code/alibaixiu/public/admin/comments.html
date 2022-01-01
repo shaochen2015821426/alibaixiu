@@ -1,3 +1,9 @@
+<script src="/login/status"></script>
+<script>
+    if (!isLogin) {
+        location.href = '/admin/login.html';
+    }
+</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -114,7 +120,7 @@
     </script>
     <!-- 所有评论模板 -->
     <!-- 页码，上一页，下一页模板 -->
-    <script type="" id="pagesTpl">
+    <script type="text/html" id="pagesTpl">
         {{if page > 1}}
         <li><a href="javascript:;" onclick="changePage({{page-1}})">上一页</a></li>
         {{/if}} {{each display}}

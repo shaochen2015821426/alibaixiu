@@ -1,3 +1,9 @@
+<script src="/login/status"></script>
+<script>
+    if (!isLogin) {
+        location.href = '/admin/login.html';
+    }
+</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -9,6 +15,7 @@
     <link rel="stylesheet" href="../assets/vendors/nprogress/nprogress.css">
     <link rel="stylesheet" href="../assets/css/admin.css">
     <script src="../assets/vendors/nprogress/nprogress.js"></script>
+
 </head>
 
 <body>
@@ -119,6 +126,7 @@
         NProgress.done()
     </script>
     <script src="../assets/vendors/art-template/template-web.js"></script>
+    <script src="../assets/js/common.js"></script>
     <!-- 轮播图列表模板 -->
     <script type="text/html" id="slideListTpl">
         {{each data}}

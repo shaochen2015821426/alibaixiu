@@ -37,3 +37,23 @@ $('#settingForm').on('submit', function() {
     })
     return false;
 })
+
+//c:实现：网站设置页面默认展示提交内容
+$.ajax({
+    type: 'get',
+    url: '/settings',
+    success: function(response) {
+        //c1：判断是否存在数据，如果之前没提交过，则不展示
+        if (response) {
+            //设置隐藏域的value值
+            $('#hiddenLogo').val(response.logo);
+            //展示上传的图片
+            $('#preview').attr('src', response.logo);
+            //展示站点名称
+            $('input[name="title"]').val(response.title);
+            //展示是否开启评论功能
+            $('input[name="comment"]').prop('checked', response.comment);
+            $('input[name="review"]').prop('checked', response.review);
+        }
+    }
+})

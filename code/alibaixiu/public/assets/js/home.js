@@ -35,7 +35,6 @@ $.ajax({
     type: 'get',
     url: '/posts/lasted',
     success: function(response) {
-        console.log(response);
         //使用模板引擎，让模板和数据进行拼接
         var html = template('lastedTpl', { data: response });
         $('#lastedBox').html(html);

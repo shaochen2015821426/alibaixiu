@@ -30,7 +30,6 @@ $.ajax({
     type: 'get',
     url: '/comments/lasted',
     success: function(response) {
-        console.log(response);
         //b1:创建模板
         var commentTpl = `
         {{each data}}
@@ -50,7 +49,6 @@ $.ajax({
         {{/each}}
         `;
         var html = template.render(commentTpl, { data: response });
-        console.log(html);
         $('#commentBox').html(html);
     }
 })
@@ -62,4 +60,41 @@ function formateDate(date) {
     //设置需要转换的时间格式,然后返回，转：post.html中调用该函数
     var time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     return time;
+}
+
+//d:实现：分类展示功能
+$.ajax({
+    type: 'get',
+    url: '/categories',
+    success: function(response) {
+        var categoryTpl = `
+        {{each data}}
+        <li>
+            <a href="list.html?categoryId={{$value._id}}">
+                <i class="fa {{$value.className}}"></i>{{$value.title}}
+            </a>
+        </li>
+        {{/each}}
+        `
+        var html = template.render(categoryTpl, { data: response });
+        $('#navBox').html(html);
+        $('#topNavBox').html(html);
+    }
+})
+
+//e:获取传递过来的url中参数值，用函数去获取
+function getUrlParams(paramName) {
+    //e2:使用location.search获取到url//['id=61c2d95f8c4a962c50bd71b2', 'age=18', 'title=china']
+    var paramArr = location.search.substring(1).split('&');
+    //e3：接续分割数组中的元素
+    for (var i = 0; i < paramArr.length; i++) {
+        //e4：获取到单个参数名=参数值的数组 ['id', '61c2d95f8c4a962c50bd71b2']
+        var param = paramArr[i].split('=');
+        if (param[0] == paramName) {
+            //e5：如果存在对应的参数名，返回对应的参数值
+            return param[1];
+        }
+    }
+    //如果没有对应的参数名，返回-1
+    return -1;
 }

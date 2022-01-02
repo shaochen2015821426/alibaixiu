@@ -22,7 +22,7 @@ function formateDate(date) {
     //因为传过来的参数是字符串类型，需要转换成date对象
     var date = new Date(date);
     //设置需要转换的时间格式,然后返回，转：post.html中调用该函数
-    var time = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
+    var time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     return time;
 }
 

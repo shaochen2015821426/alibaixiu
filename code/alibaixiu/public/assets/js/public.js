@@ -98,3 +98,14 @@ function getUrlParams(paramName) {
     //如果没有对应的参数名，返回-1
     return -1;
 }
+
+//f:获取输入框中的数据，并传递给跳转页面
+//f1：对输入框的提交事件进行监听
+$('.search form').on('submit', function() {
+
+    //f2:获取输入框输入的数据
+    var keys = $(this).find('.keys').val();
+    //f3:获取到参数后拼接到跳转链接上
+    location.href = 'search.html?key=' + keys;
+    return false;
+})

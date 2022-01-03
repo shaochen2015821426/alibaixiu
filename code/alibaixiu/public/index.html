@@ -1,12 +1,9 @@
 <script src="/login/status"></script>
 <script>
     if (!isLogin) {
+        alert(isLogin);
         location.href = '/admin/login.html';
     }
-</script>
-<script src="/login/status"></script>
-<script>
-    if (!isLogin) location.href = 'login.html';
 </script>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -136,9 +133,9 @@
         {{/each}}
     </script>
     <!-- 最新发布模板 -->
-    <script src="./assets/js/home.js"></script>
     <script src="./assets/js/recommend.js"></script>
     <script src="./assets/js/public.js"></script>
+    <script src="./assets/js/home.js"></script>
 </body>
 
 </html>
